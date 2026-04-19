@@ -1,8 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-  <meta http-equiv="refresh" content="0; url=https://youtu.be/Zt6KyYUprTQ">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apri il video</title>
+
+  <script>
+    const videoId = "Zt6KyYUprTQ";
+
+    function openApp() {
+      window.location.href = "youtube://www.youtube.com/watch?v=" + videoId;
+    }
+
+    function openWeb() {
+      window.location.href = "https://youtu.be/" + videoId;
+    }
+
+    window.onload = function () {
+      openApp();
+
+      setTimeout(function () {
+        document.getElementById("fallback").style.display = "block";
+      }, 1200);
+    };
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .box {
+      max-width: 400px;
+    }
+
+    button, a {
+      display: block;
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .app {
+      background: red;
+      color: white;
+      border: none;
+    }
+
+    .web {
+      background: #333;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="box">
+    <h2>Sto aprendo il video…</h2>
+
+    <div id="fallback" style="display:none;">
+      <p>Se non si apre, clicca qui:</p>
+      <button class="app" onclick="openApp()">Apri su YouTube</button>
+      <a class="web" href="https://youtu.be/Zt6KyYUprTQ">Apri nel browser</a>
+    </div>
+  </div>
 </body>
 </html>
