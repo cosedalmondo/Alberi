@@ -1,78 +1,42 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apri il video</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apri YouTube</title>
 
   <script>
-    const videoId = "Zt6KyYUprTQ";
+    (function () {
+      var target = "https://youtu.be/Nb1nMTaleO4";
 
-    function openApp() {
-      window.location.href = "youtube://www.youtube.com/watch?v=" + videoId;
-    }
+      var isAndroid = /Android/i.test(navigator.userAgent);
+      var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    function openWeb() {
-      window.location.href = "https://youtu.be/" + videoId;
-    }
+      if (isAndroid) {
+        // apre direttamente app YouTube su Android
+        window.location = "intent://youtu.be/Nb1nMTaleO4#Intent;scheme=https;package=com.google.android.youtube;end";
+        setTimeout(function () {
+          window.location.href = target;
+        }, 1500);
 
-    window.onload = function () {
-      openApp();
+      } else if (isIOS) {
+        // prova ad aprire app YouTube su iPhone
+        window.location = "youtube://youtu.be/Nb1nMTaleO4";
+        setTimeout(function () {
+          window.location.replace(target);
+        }, 1500);
 
-      setTimeout(function () {
-        document.getElementById("fallback").style.display = "block";
-      }, 1200);
-    };
+      } else {
+        // fallback desktop
+        window.location.href = target;
+      }
+    })();
   </script>
 
-  <style>
-    body {
-      margin: 0;
-      background: #111;
-      color: white;
-      font-family: Arial;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    .box {
-      max-width: 400px;
-    }
-
-    button, a {
-      display: block;
-      margin-top: 15px;
-      padding: 15px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    .app {
-      background: red;
-      color: white;
-      border: none;
-    }
-
-    .web {
-      background: #333;
-      color: white;
-    }
-  </style>
+  <noscript>
+    <a href="https://youtu.be/Nb1nMTaleO4">Apri il video</a>
+  </noscript>
 </head>
 
-<body>
-  <div class="box">
-    <h2>Sto aprendo il video…</h2>
-
-    <div id="fallback" style="display:none;">
-      <p>Se non si apre, clicca qui:</p>
-      <button class="app" onclick="openApp()">Apri su YouTube</button>
-      <a class="web" href="https://youtu.be/Zt6KyYUprTQ">Apri nel browser</a>
-    </div>
-  </div>
-</body>
+<body></body>
 </html>
