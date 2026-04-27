@@ -1,39 +1,30 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apri YouTube</title>
+<script>
+(function () {
+  var target = "https://www.youtube.com/@cosedalmondoofficial?sub_confirmation=1";
 
-  <script>
-    (function () {
-      var target = "https://youtu.be/_viHPrSzkzw";
+  var isAndroid = /Android/i.test(navigator.userAgent);
+  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-      var isAndroid = /Android/i.test(navigator.userAgent);
-      var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isAndroid) {
+    window.location = "intent://www.youtube.com/@cosedalmondoofficial?sub_confirmation=1#Intent;scheme=https;package=com.google.android.youtube;end";
+    setTimeout(function () {
+      window.location.href = target;
+    }, 1200);
 
-      if (isAndroid) {
-        window.location = "intent://youtu.be/_viHPrSzkzw#Intent;scheme=https;package=com.google.android.youtube;end";
-        setTimeout(function () {
-          window.location.href = target;
-        }, 1500);
+  } else if (isIOS) {
+    window.location = "youtube://www.youtube.com/@cosedalmondoofficial";
+    setTimeout(function () {
+      window.location.href = target;
+    }, 1200);
 
-      } else if (isIOS) {
-        window.location = "youtube://youtu.be/_viHPrSzkzw";
-        setTimeout(function () {
-          window.location.replace(target);
-        }, 1500);
-
-      } else {
-        window.location.href = target;
-      }
-    })();
-  </script>
-
-  <noscript>
-    <a href="https://youtu.be/_viHPrSzkzw">Apri il video</a>
-  </noscript>
+  } else {
+    window.location.href = target;
+  }
+})();
+</script>
 </head>
-
 <body></body>
 </html>
