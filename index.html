@@ -7,34 +7,31 @@
 
   <script>
     (function () {
-      var target = "https://youtu.be/Nb1nMTaleO4";
+      var target = "https://youtu.be/_viHPrSzkzw";
 
       var isAndroid = /Android/i.test(navigator.userAgent);
       var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
       if (isAndroid) {
-        // apre direttamente app YouTube su Android
-        window.location = "intent://youtu.be/Nb1nMTaleO4#Intent;scheme=https;package=com.google.android.youtube;end";
+        window.location = "intent://youtu.be/_viHPrSzkzw#Intent;scheme=https;package=com.google.android.youtube;end";
         setTimeout(function () {
           window.location.href = target;
         }, 1500);
 
       } else if (isIOS) {
-        // prova ad aprire app YouTube su iPhone
-        window.location = "youtube://youtu.be/Nb1nMTaleO4";
+        window.location = "youtube://youtu.be/_viHPrSzkzw";
         setTimeout(function () {
           window.location.replace(target);
         }, 1500);
 
       } else {
-        // fallback desktop
         window.location.href = target;
       }
     })();
   </script>
 
   <noscript>
-    <a href="https://youtu.be/Nb1nMTaleO4">Apri il video</a>
+    <a href="https://youtu.be/_viHPrSzkzw">Apri il video</a>
   </noscript>
 </head>
 
